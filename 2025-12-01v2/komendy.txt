@@ -1,0 +1,12 @@
+λ dotnet new classlib -n Kalk
+dotnet new nunit -n Kalk.Test
+cd Kalk.Test\
+dotnet add package NUnit
+
+napisz na konsole w c# o nazwie Energia, oraz projekt energia Energia.Test app wyznacza Ep, Ek, Em, a test testuje
+
+napisz program: który przyjmuje od użytkownika imiona, dodaje je do tablicy tylko jeśli zaczynają się na litere 'A'
+ (bez względu na wielkosc liter) mają maksymalną ilość zanków = 7, konczy dzialanie po exit, zawiera testy jednostkowe
+
+Napisz program oraz go przetestuj. Program w pytongu na konsole. aplikacja pozoli użytkownikowi wpisać dowolne liczby całkowite. do tab zapsuje tylko dodatnie i parzyste.
+Program zakończy działanie po wpisaniu stop po zakończyniu zapisuje liste przyjętych i liczbe wszystkich zapisanych. Przetestuj funkcje odpowiedzialną za walidacje liczby
