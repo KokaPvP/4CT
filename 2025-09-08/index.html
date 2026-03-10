@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sort</title>
+</head>
+<body>  
+    <script>
+        const tab = [4,2,3,5,9,16,1,7];
+        
+        console.log(qs(tab));
+
+        function qs(tab)
+        {
+            if(tab.length <= 1)
+            {
+                return tab;
+            }
+            else
+            {
+                let pivot = tab[0];
+                let lewa = [];
+                let prawa = [];
+
+                for(let i = 1;i<tab.length;i++){
+                    let element = tab[i];
+                    if(element > pivot)
+                    {
+                        prawa.push(element);
+                    }
+                    else
+                    {
+                        lewa.push(element);
+                    }
+                }
+
+                let wynik = [];
+                for (const element of qs(lewa)) {
+                    wynik.push(element);
+                }
+                wynik.push(pivot);
+                for (const element of qs(prawa)) {
+                    wynik.push(element);
+                }
+
+                return wynik;
+            }
+        }
+
+    </script>
+</body>
+</html>
