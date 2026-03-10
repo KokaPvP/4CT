@@ -1,0 +1,8 @@
+<p>{{title}}</p>
+<hr>
+<input type="number" #m placeholder="podaj masa [kg]">
+<input type="number" #h placeholder="podej wysokosc [m]">
+<button (click)="wynik.innerText = licz(+m.value,+h.value).toString()" >Licz</button>
+<p class="wynik">
+    <span #wynik>0</span>[J]
+</p>

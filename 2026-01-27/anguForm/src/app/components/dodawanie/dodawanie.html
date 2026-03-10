@@ -1,0 +1,8 @@
+<p>{{title}}</p>
+<hr>
+<input type="number" #liczba1 placeholder="podaj liczbe...">
+<input type="number" #liczba2 placeholder="podaj liczbe...">
+<button (click)="wynik.innerText = dodawanie(+liczba1.value,+liczba2.value).toString()">Oblicz dodawanie</button>
+<p class="wynik" #wynik>
+    0
+</p>

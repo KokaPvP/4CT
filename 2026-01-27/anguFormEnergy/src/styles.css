@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.wynik{
+    border: 2px solid darkred;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+}

@@ -1,0 +1,8 @@
+<p>{{title}}</p>
+<hr>
+<input type="number" #liczba1 placeholder="podaj masa [kg]">
+<input type="number" #liczba2 placeholder="podej predkosc [m/s]">
+<button (click)="wynik.innerText = licz(+liczba1.value,+liczba2.value).toString()">Licz</button>
+<p class="wynik">
+    <span #wynik>0</span>[J]
+</p>
