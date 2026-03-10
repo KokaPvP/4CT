@@ -1,0 +1,10 @@
+<p>normalny</p>
+<table>
+    <tr *ngFor="let opis of opisy">
+        <td>{{opis.imie}}</td>
+        <td>{{opis.nazwisko}}</td>
+        <td>{{opis.przedmiot}}</td>
+        <td>{{opis.wiek}}</td>
+        <td><img [src]="opis.foto" class="zdjecia"></td>
+    </tr>
+</table>

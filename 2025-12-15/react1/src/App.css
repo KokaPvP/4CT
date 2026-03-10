@@ -1,0 +1,26 @@
+*,html{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Osoba
+{
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 2px 2px 2px 2px black;
+  text-align: center;
+  margin: 10px;
+}
+
+.container{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+input
+{
+  margin: 10px;
+}
