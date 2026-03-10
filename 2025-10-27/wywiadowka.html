@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wywiadówka</title>
+</head>
+<body>
+    <select id="klasa">
+        <option value="4CT">4CT</option>
+        <option value="3CT">3CT</option>
+        <option value="2CT">2CT</option>
+        <option value="1CT">1CT</option>
+    </select>
+
+    <button onclick="wyw.wyswietl()">OK</button>
+
+    <script>
+        class Powiadomienia
+        {
+            constructor()
+            {
+                this.observers = [];
+            }
+
+            sub(ob)
+            {
+                this.observers.push(ob);
+            }
+
+            unSub(ob)
+            {
+                this.observers = this.observers.filter(o=>o!==ob);
+            }
+
+            pobierListe()
+            {
+                let lista = [];
+                this.observers.forEach(v=>v.dodajNaListe(lista));
+                let wynik = 'Zapisani:\n';
+                let i = 1;
+                lista.forEach(element => {
+                    wynik+=i+". "+element+"\n";
+                    i++;
+                });
+                alert(wynik);
+            }
+        }
+
+        class Rodzic
+        {
+            constructor(imie, nazwisko)
+            {
+                this.imie = imie;
+                this.nazwisko = nazwisko;
+            }
+
+            dodajNaListe(lista)
+            {
+                lista.push(`${this.imie} ${this.nazwisko}`);
+            }
+        }
+
+        class Wywiadowka
+        {
+            constructor()
+            {
+                this._1CT = new Powiadomienia();
+                this._2CT = new Powiadomienia();
+                this._3CT = new Powiadomienia();
+                this._4CT = new Powiadomienia();
+
+                this._1CT.sub(new Rodzic("Robert","Polacki"));
+                this._1CT.sub(new Rodzic("Martyna","Krosick"));
+                this._1CT.sub(new Rodzic("Kuba","Komorun"));
+                this._1CT.sub(new Rodzic("Urszula","Wanik"));
+                this._1CT.sub(new Rodzic("Tymoteusz","Ikiski"));
+                this._1CT.sub(new Rodzic("Michal","Knotek"));
+
+                this._2CT.sub(new Rodzic("Maciej","Kotlina"));
+                this._2CT.sub(new Rodzic("Pawel","Konik"));
+                this._2CT.sub(new Rodzic("Norbert","Rorwerski"));
+                this._2CT.sub(new Rodzic("Oskar","Fatresz"));
+
+                this._3CT.sub(new Rodzic("Ignacy","Paderewski"));
+                this._3CT.sub(new Rodzic("Julia","Nieżugaj"));
+
+                this._4CT.sub(new Rodzic("Marta","Wstawska"));
+                this._4CT.sub(new Rodzic("Lambert","Czepiec"));
+                this._4CT.sub(new Rodzic("Hubert","Klimina"));
+            }
+
+            wyswietl()
+            {
+                switch(document.getElementById("klasa").value)
+                {
+                    case '1CT':
+                        this._1CT.pobierListe();
+                    break;
+                    case '2CT':
+                        this._2CT.pobierListe();
+                    break;
+                    case '3CT':
+                        this._3CT.pobierListe();
+                    break;
+                    case '4CT':
+                        this._4CT.pobierListe();
+                    break;
+                }
+            }
+        }
+
+        let wyw = new Wywiadowka();
+
+
+    </script>
+</body>
+</html>

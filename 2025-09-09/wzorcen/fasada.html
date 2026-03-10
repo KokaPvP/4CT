@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class AudioSystem {
+            turnOn()
+            {
+                console.log("Audio");
+            }
+            setVolume(volume)
+            {
+                console.log(`Glosnosc ustawiona na ${volume}`);
+            }
+        }
+        class VideoSystem {
+            turnOn()
+            {
+                console.log("Video");
+            }
+            setResolution(resolution)
+            {
+                console.log(`rozdzelcosc ustawiona na ${resolution}`);
+            }
+        }
+        class StreamingService{
+            connect()
+            {
+                console.log("Polaczono");
+            }
+            play(movie)
+            {
+                console.log(`film ${movie}`);
+            }
+        }
+
+        class HomeFasade{
+            constructor()
+            {
+                this.audio = new AudioSystem();
+                this.video = new VideoSystem();
+                this.streaming = new StreamingService();
+            }
+
+            watchMovie(video)
+            {
+                console.log("Przygotowaniado ogladania");
+                this.audio.turnOn();
+                this.audio.setVolume(29);
+                this.video.turnOn();
+                this.video.setResolution("1920 x 1080");
+                this.streaming.connect();
+                this.streaming.play(video);
+                console.log("Milego seansu");
+            }
+        }
+
+        const oglondamy = new HomeFasade();
+        oglondamy.watchMovie("4CT");
+    </script>
+</body>
+</html>

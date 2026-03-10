@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Obserwator - umożliwia powiązanie obiektów w relacji 1:n, kiedy obiekt zmienia stan automatycznie powiadamia swoich obserwatorów
+        // przyklad powiadomienia w app
+
+        class Subject
+        {
+            constructor()
+            {
+                this.observers = [];
+            }
+
+            subscribe(obs)
+            {
+                this.observers.push(obs);
+            }
+            unsubscribe(obs)
+            {
+                this.observers = this.observers.filter(s=>s!==obs);
+            }
+            notify(data)
+            {
+                this.observers.forEach(v=>v.update(data));
+            }
+        }
+
+        class Subscriber
+        {
+            constructor(name)
+            {
+                this.name = name;
+            }
+
+            update(data)
+            {
+                console.log(`${this.name} został zaaktualizowany`);
+            }
+        }
+
+        let s = new Subject();
+        let sub = new Subscriber("Baza wirusów Avast");
+        let sub2 = new Subscriber("napewno nie windows");
+
+        s.subscribe(sub);
+        s.subscribe(sub2);
+
+        s.notify("jakas wiadomosc");
+
+        s.unsubscribe(sub);
+
+        s.notify("inna wiadomosc");
+    </script>
+</body>
+</html>

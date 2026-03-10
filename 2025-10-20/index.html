@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let tekst = "megami-sama wa kawaii";
+        let key = 3;
+        let szyfr = "";
+
+        for (const char of tekst) {
+
+            if(/[a-z]/.test(char))
+            {
+                szyfr += String.fromCharCode(((char.charCodeAt() - 97+key)%26)+97);
+            }
+            else if(/[A-Z]/.test(char))
+            {
+                szyfr += String.fromCharCode(((char.charCodeAt() - 65+key)%26)+65);
+            }
+            else szyfr += char
+        }
+
+        console.log(`Przed: ${tekst}`);
+        console.log(`Po: ${szyfr}`);
+    </script>
+</body>
+</html>

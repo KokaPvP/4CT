@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F</title>
+</head>
+<body>
+    <script>
+        /* Powiadomienia */
+        class Notification
+        {
+            constructor(message)
+            {
+                this.message = message;
+            }
+
+            send()
+            {
+                console.log(`Wysylam powiadomienie: ${this.message}`);
+            }
+        }
+
+        class EmailNotification extends Notification
+        {
+            send()
+            {
+                console.log(`Wysylam Email: ${this.message}`);
+            }
+        }
+
+        class SmsNotification extends Notification
+        {
+            send()
+            {
+                console.log(`Wysylam SMS: ${this.message}`);
+            }
+        }
+
+        class PushNotification extends Notification
+        {
+            send()
+            {
+                console.log(`Wysylam Push: ${this.message}`);
+            }
+        }
+
+        class NotificationFactory
+        {
+            createNotification(type,message)
+            {
+                switch(type)
+                {
+                    case "Email": return new EmailNotification(message);
+                    case "SMS": return new SmsNotification(message);
+                    case "Push": return new PushNotification(message);
+                    default: return new Notification(message);
+                }
+            }
+        }
+
+        const fact = new NotificationFactory();
+        fact.createNotification("SMS","Tera promcje momy dla ciebie huhuhu").send();
+        fact.createNotification("Email","Nie znalazłeś mnie w spamie co nie?").send();
+    </script>
+</body>
+</html>

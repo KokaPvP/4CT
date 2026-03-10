@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Klasa{
+            constructor()
+            {
+                if(Klasa.instance)
+                {
+                    return Klasa.instance;
+                }
+                Klasa.instance = this;
+
+                this.settings = {
+                    apiUrl: "http://pzs1.pszczyna.edu.pl",
+                    debug: true,
+                    name: "polak"
+                }                
+            }
+
+            get(key)
+                {
+                    return this.settings[key];
+                }
+
+                set(key, value)
+                {
+                    this.settings[key] = value;
+                }
+        }
+
+        const c1 = new Klasa();
+        const c2 = new Klasa();
+        const c3 = new Klasa();
+        const c4 = new Klasa();
+
+        c1.set("debug",false);
+        console.log(c4.get("debug"));
+
+    </script>
+</body>
+</html>

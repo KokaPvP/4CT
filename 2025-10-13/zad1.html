@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zad 1</title>
+</head>
+<body>
+    <h1>Zad 1 - punkt flszkowy</h1>
+    <select id="select">
+        <option value="Plastik">Plastik</option>
+        <option value="Papier">Papier</option>
+        <option value="Szklo">Szklo</option>
+        <option value="Metal">Metal</option>
+    </select>
+
+    Ilosc: <input type="number" id="ilosc">
+    <button onclick="maszyna.policz()">Oblicz</button>
+
+    <script>
+        class FlaszkaPlastik
+        {
+            getCena()
+            {
+                return 0.15;
+            }
+        }
+
+        class FlaszkaPapier
+        {
+            getCena()
+            {
+                return 0.40;
+            }
+        }
+
+        class FlaszkaSzklo
+        {
+            getCena()
+            {
+                return 0.64;
+            }
+        }
+
+        class FlaszkaMetal
+        {
+            getCena()
+            {
+                return 1.23;
+            }
+        }
+
+        class Maszyna
+        {
+            constructor()
+            {
+                this.plastik = new FlaszkaPlastik();
+                this.papier = new FlaszkaPapier();
+                this.szklo = new FlaszkaSzklo();
+                this.metal = new FlaszkaMetal();
+            }
+
+            policz()
+            {
+                let wybor = document.getElementById("select").value;
+                let ilosc = parseFloat(document.getElementById("ilosc").value);
+
+                switch(wybor)
+                {
+                    case "Plastik":
+                        this.currentFlaszka = this.plastik;
+                    break;
+                    case "Papier":
+                        this.currentFlaszka = this.papier;
+                        break;
+                    case "Szklo":
+                        this.currentFlaszka = this.szklo;
+                        break;
+                    case "Metal":
+                        this.currentFlaszka = this.metal;
+                        break;
+                    default:
+                        this.currentFlaszka = this.plastik;
+                        break;
+                }
+
+                alert(`Zdobyles za to ${Math.round(this.currentFlaszka.getCena() * ilosc * 100)/100} zł`);
+            }
+        }
+
+        const maszyna = new Maszyna();
+    </script>
+</body>
+</html>

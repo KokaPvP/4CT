@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zad 2</title>
+</head>
+<body>
+    <h1>Zad 2 - AutoKawa</h1>
+
+    Rodzaj kawy:
+    <select id="select">
+        <option value="Late">Late</option>
+        <option value="Expresso">Expresso</option>
+        <option value="Cappucino">Cappucino</option>
+    </select>
+
+    Mleko: <input type="range" id="mleko" min="0" max="100">
+    Cukier: <input type="range" id="cukier" min="0" max="10">
+    Moc kawy <input type="range" id="mkawa" min="5" max="100">
+
+    <button onclick="automat.zrobMiKawe()">OK</button>
+
+    <div id="kawaDisplay" style="display: none;">
+        <div><img src="" id="ikawa" style="height: 300px;"></div>
+        <div>Mleko: <span id="mlekoDisplay"></span></div>
+        <div>Cukier: <span id="cukierDisplay"></span></div>
+        <div>MocKawy: <span id="mocKawyDisplay"></span></div>
+    </div>
+    
+
+    <script>
+        class Late{
+            getUrl()
+            {
+                return "https://www.nescafe.com/pl/sites/default/files/2023-04/RecipeHero_CaramelLatte_1066x1066.jpg";
+            }
+        }
+
+        class Expresso{
+            getUrl()
+            {
+                return "https://www.shutterstock.com/image-photo/espresso-coffee-transparent-cup-600nw-2512810803.jpg";
+            }
+        }
+
+        class Cappucino{
+            getUrl()
+            {
+                return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiockfh_z632UrDl1A8D_0ec9xvdiLNL0oEA&s";
+            }
+        }
+
+        class Mleko{
+            setMleko(amount)
+            {
+                document.getElementById("mlekoDisplay").innerText = amount + " ml";
+            }
+        }
+
+        class Cukier{
+            setCukier(amount)
+            {
+                document.getElementById("cukierDisplay").innerText = amount + " kostek";
+            }
+        }
+
+        class MocKawy{
+            setMoc(amount)
+            {
+                document.getElementById("mocKawyDisplay").innerText = amount + " g";
+            }
+        }
+
+        class Automat
+        {
+            constructor()
+            {
+                this.late = new Late();
+                this.expresso = new Expresso();
+                this.cappucino = new Cappucino();
+                this.mleko = new Mleko();
+                this.cukier = new Cukier();
+                this.mocKawy = new MocKawy();
+            }
+
+            zrobMiKawe()
+            {
+                let wybor = document.getElementById("select").value;
+                this.mleko.setMleko(parseFloat(document.getElementById("mleko").value));
+                this.cukier.setCukier(parseFloat(document.getElementById("cukier").value));
+                this.mocKawy.setMoc(parseFloat(document.getElementById("mkawa").value));
+
+                let url = "";
+                if(wybor == "Late") url = this.late.getUrl();
+                if(wybor == "Expresso") url = this.expresso.getUrl();
+                if(wybor == "Cappucino") url = this.cappucino.getUrl();
+
+                document.getElementById("ikawa").src = url;
+
+                document.getElementById("kawaDisplay").style.display = "block";
+            }
+        }
+
+        const automat = new Automat();
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+Ustaw temperatura <input type="number" onchange="pogoda.setTemp(this.value)"><br>
+
+temperatura na fonie: <span id="phone"></span> °C <button onclick="pogoda.subscribe(phone); document.getElementById('phoneDiv').style.backgroundColor = 'green';">subscribe</button> <button onclick="pogoda.unsubscribe(phone); document.getElementById('phoneDiv').style.backgroundColor = 'red';">unsubscribe</button> <div style="width: 5px; height: 5px; background-color: #ff0000;" id="phoneDiv"></div> <br>
+temperatura na stronie: <span id="web"></span> °C <button onclick="pogoda.subscribe(web); document.getElementById('webDiv').style.backgroundColor = 'red';">subscribe</button> <button onclick="pogoda.unsubscribe(web); document.getElementById('webDiv').style.backgroundColor = 'green';">unsubscribe</button> <div style="width: 5px; height: 5px; background-color: red;" id="webDiv"></div>
+
+<body>
+    <script>
+        //Pogoda
+        /*
+            Phone display i webApp - obserwatorzy którzy reagują na powadomienie. można dodawać i usuwać dynamicznie 
+            Zastosowanie (np. pogoda, czat, social)
+        */
+
+        class Pogoda
+        {
+            constructor()
+            {
+                this.observers = [];
+            }
+
+            subscribe(obs)
+            {
+                this.observers.push(obs);
+            }
+
+            unsubscribe(obs)
+            {
+                this.observers = this.observers.filter(o=>o !== obs)
+            }
+
+            setTemp(temp)
+            {
+                this.observers.forEach(v=>v.update(temp));
+            }
+        }
+
+        class PhoneDisplay
+        {
+            update(temp)
+            {
+                document.getElementById("phone").innerText = temp;
+            }
+        }
+
+        class WebApp
+        {
+            update(temp)
+            {
+                document.getElementById("web").innerText = temp;
+            }
+        }
+
+        let pogoda = new Pogoda();
+        let web = new WebApp();
+        let phone = new PhoneDisplay();
+    </script>
+</body>
+</html>
