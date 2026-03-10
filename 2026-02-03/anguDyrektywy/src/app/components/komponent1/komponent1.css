@@ -1,0 +1,17 @@
+.box{
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.active{
+    background-color: brown;
+    color: bisque;
+}
+
+.inactive{
+    background-color: bisque;
+    color: rgb(19, 19, 114);
+}

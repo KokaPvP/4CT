@@ -1,0 +1,17 @@
+<div
+    class="box"
+    [ngClass]="{active:isActive,inactive:!isActive}"
+    [ngStyle]="{borderColor: isActive?'green':'red'}"
+    >
+    @if (isActive) {
+        <p>aktywny</p>
+    }
+    @else {
+        <p>no niestety nie jest aktywny</p>
+    }
+</div>
+
+<button (click)="isActive = !isActive">
+    @if (isActive) {<p>deaktywuj</p>}
+    @else {<p>aktywuj</p>}
+</button>
