@@ -1,0 +1,12 @@
+<h1>{{name}}</h1>
+<p>efekt: {{effect}}</p>
+
+<img
+    [src]="foto"
+    alt="foto2"
+    class="zdjecia"
+    [class.zoom]="zoom"
+    (click)="toggleZoom()"
+/>
+
+<p>Kliknij na zdjecie, aby powiekszyc/zmniejszyc</p>

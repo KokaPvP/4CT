@@ -1,0 +1,10 @@
+.zdjecia{
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.anim{
+    filter:grayscale();
+}

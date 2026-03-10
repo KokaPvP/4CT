@@ -1,0 +1,11 @@
+<h2>Lista użytkowników</h2>
+<ul>
+  @for (user of users; track $index) 
+  {
+    <li>
+      <p><b>Id: </b>{{user.id}}</p><br>
+      <p><b>Name: </b>{{user.name}}</p><br>
+      <p><b>Username: </b>{{user.username}}</p><br>
+    </li>
+  }
+</ul>
