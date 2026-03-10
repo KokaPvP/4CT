@@ -1,0 +1,43 @@
+*,html
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+main{
+  width: 100%;
+  padding: 50px;
+}
+
+footer{
+  padding: 20px;
+  text-align: center;
+}
+
+.czerwony{
+  background-color: rgb(180, 44, 44);
+  color: white;
+}
+
+.zielony{
+  background-color: green;
+  color:orange;
+}
+
+.niebieski{
+  background-color: rgb(72, 72, 218);
+  color: black;
+}
+
+.select{
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
